@@ -12,6 +12,8 @@ using namespace std;
 
 const int defMaxListSize = 10;   // Default maximum list size
 
+// 특정 자료형에 대한 배열
+// 현재는 char 타입!!
 typedef char DataType;
 
 class List
@@ -45,8 +47,8 @@ public:
 	void showStructure() const;
 
 	// In-lab operations
-	//void moveToNth(int n);	// in-lab 2
-	//bool find(const DataType& searchDataItem);	// in-lab 3
+	void moveToNth(int n);	// in-lab 2
+	bool find(const DataType& searchDataItem);	// in-lab 3
 
 
 private:

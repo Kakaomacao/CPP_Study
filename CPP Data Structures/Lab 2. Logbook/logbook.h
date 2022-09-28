@@ -26,7 +26,7 @@ class Logbook
     int getDaysInMonth() const;            // Number of days in month
 
     // In-lab operations
-    //void displayCalendar() const;          // Display as calendar
+    void displayCalendar() const;          // Display as calendar
 
   private:
 
@@ -34,7 +34,7 @@ class Logbook
     bool isLeapYear() const;               // Leap year?
 
     // In-lab facilitator function
-    //int getDayOfWeek(int day) const;     // Return day of the week
+    int getDayOfWeek(int day) const;     // Return day of the week
 
     // Data members
     int logMonth,      // Month covered by logbook

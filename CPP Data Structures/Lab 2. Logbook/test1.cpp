@@ -56,9 +56,9 @@ int main(void)
 
 // Test 3 : Tests the calendar operation.
 
-   //cout << endl;
-   //testLog.displayCalendar();
-   //cout << endl;
+   cout << endl;
+   testLog.displayCalendar();
+   cout << endl;
 
    system("PAUSE");
 

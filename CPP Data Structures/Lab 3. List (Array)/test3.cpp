@@ -125,16 +125,16 @@ int main(void)
 				cout << "List is NOT full" << endl;
 			break;
 
-		//case 'M': case 'm':						 // In-lab 2
-		//	cout << "Move the data item marked by the cursor to position " << n << endl;
-		//	testList.moveToNth(n);
-		//	break;
+		case 'M': case 'm':						 // In-lab 2
+			cout << "Move the data item marked by the cursor to position " << n << endl;
+			testList.moveToNth(n);
+			break;
 
-		//case '?':						        // In-lab 3
-		//	if (testList.find(testElement))
-		//		cout << "Search succeeds" << endl;
-		//	else
-		//		cout << "Search fails" << endl;
+		case '?':						        // In-lab 3
+			if (testList.find(testElement))
+				cout << "Search succeeds" << endl;
+			else
+				cout << "Search fails" << endl;
 
 		case 'Q': case 'q':                   // Quit test program
 			break;

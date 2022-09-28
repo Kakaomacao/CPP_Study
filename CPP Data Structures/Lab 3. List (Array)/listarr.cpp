@@ -13,20 +13,22 @@
 List::List(int maxNumber)
 
 // Creates an empty list. Allocates enough memory for maxNumber
-// data items (defaults to defMaxListSize).
+// data items (defaults to defMaxListSize)
+// 동적 할당
 {
-	// pre-lab
-
+	cursor = -1;
+	size = 0;
+	dataItems = new DataType[maxNumber];
+	maxSize = maxNumber;
 }
 
 //--------------------------------------------------------------------
 
 List:: ~List()
+
 // Frees the memory used by a list.
-
 {
-	// pre-lab
-
+	delete[] dataItems;
 }
 
 //--------------------------------------------------------------------
@@ -36,10 +38,30 @@ void List::insert(const DataType& newDataItem)
 // Inserts newDataItem after the cursor. If the list is empty, then
 // newDataItem is inserted as the first (and only) data items in the
 // list. In either case, moves the cursor to newDataItem.
-
 {
-	// pre-lab
-
+	if (isFull())
+	{
+		cout << "List is Full" << endl;
+	}
+	else
+	{
+		if (isEmpty())
+		{
+			size += 1;
+			cursor += 1;
+			dataItems[cursor] = newDataItem;
+		}
+		else
+		{
+			cursor++;
+			size += 1;
+			for (int i = 0; i < size; i++)
+			{
+				dataItems[cursor + 1 + i] = dataItems[cursor + i];
+			}
+			dataItems[cursor] = newDataItem;
+		}
+	}
 }
 
 //--------------------------------------------------------------------
@@ -50,8 +72,19 @@ void List::remove()
 // cursor to the next data item item in the list. Assumes that the
 // first list data items "follows" the last list data item.
 {
-	// pre-lab
-
+	if (cursor == size - 1)
+	{
+		size -= 1;
+		cursor = 0;
+	}
+	else
+	{
+		size -= 1;
+		for (int i = 0; i <= size; i++)
+		{
+			dataItems[cursor + i] = dataItems[cursor + 1 + i];
+		}
+	}
 }
 
 //--------------------------------------------------------------------
@@ -61,42 +94,58 @@ void List::replace(const DataType& newDataItem)
 // Replaces the item marked by the cursor with newDataItem and
 // leaves the cursor at newDataItem.
 {
-	// Requires that the list is not empty
-	// pre-lab
-
+	if (isEmpty())
+	{
+		cout << "Empty List" << endl;
+	}
+	else
+	{
+		dataItems[cursor] = newDataItem;
+	}
 }
+
 //--------------------------------------------------------------------
 
 void List::clear()
+
 // Removes all the data items from a list.
 {
-	// pre-lab
+	size = 0;
+	cursor = 0;
 }
 
 //--------------------------------------------------------------------
 
 bool List::isEmpty() const
+
 // Returns true if a list is empty. Otherwise, returns false.
 {
-	// pre-lab
+	if (size == 0)
+		return true;
+	else
+		return false;
 }
 
 //--------------------------------------------------------------------
 
 bool List::isFull() const
+
 // Returns true if a list is full. Otherwise, returns false.
 {
-	// pre-lab
+	if (size == maxSize)
+		return true;
+	else
+		return false;
 
 }
 
 //--------------------------------------------------------------------
 
 void List::gotoBeginning()
+
 // Moves the cursor to the beginning of the list.
 {
-	// pre-lab
-
+	cursor = 0;
 }
 
 //--------------------------------------------------------------------
@@ -106,7 +155,7 @@ void List::gotoEnd()
 // Moves the cursor to the end of the list.
 
 {
-	// pre-lab
+	cursor = size - 1;
 }
 
 //--------------------------------------------------------------------
@@ -117,8 +166,15 @@ bool List::gotoNext()
 // cursor to the next item in the list and returns true. Otherwise,
 // returns false.
 {
-	// pre-lab
-
+	if (cursor != size - 1)
+	{
+		cursor += 1;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 //--------------------------------------------------------------------
@@ -128,29 +184,37 @@ bool List::gotoPrior()
 // If the cursor is not at the beginning of a list, then moves the
 // cursor to the preceeding item in the list and returns true.
 // Otherwise, returns false.
-
 {
-	// pre-lab
-
+	if (cursor == 0)
+	{
+		return false;
+	}
+	else
+	{
+		cursor -= 1;
+		return true;
+	}
 }
 
 //--------------------------------------------------------------------
 
 DataType List::getCursor() const
+
 // Returns the item marked by the cursor.
-
 {
-	// pre-lab
-
+	if (isEmpty())
+		cout << "Empty List" << endl;
+	else
+		return dataItems[cursor];
 }
 
 //--------------------------------------------------------------------
 
 void List::showStructure() const
+
 // Outputs the data items in a list. If the list is empty, outputs
 // "Empty list". This operation is intended for testing/debugging
 // purposes only.
-
 {
     // pre-lab
 	cout << "size = " << size << "\t" << "cursor = " << cursor << endl;
@@ -168,15 +232,28 @@ void List::showStructure() const
 
 //--------------------------------------------------------------------
 
-//in-lab
-//void List::moveToNth(int n)
-//{
-//	// in-lab 2
-//
-//}
-//
-//bool List::find(const DataType& searchDataItem)
-//{
-//	// in-lab 3
-//
-//}
+void List::moveToNth(int n)
+{
+	char c = 'a';
+	c = dataItems[cursor];
+	dataItems[cursor] = dataItems[n];
+	dataItems[n] = c;
+	cursor = n;
+}
+
+bool List::find(const DataType& searchDataItem)
+{
+	for (int i = 0; i < size - cursor; i++)
+	{
+		if (dataItems[cursor + i] == searchDataItem)
+		{
+			cursor += i;
+			return true;
+		}
+		if (cursor + i == size - 1)
+		{
+			cursor += i;
+			return false;
+		}
+	}
+}
