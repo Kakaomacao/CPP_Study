@@ -27,8 +27,8 @@ class OrdList : public List
     bool retrieve ( char searchKey, DataType &searchDataItem );
 
     // In-lab operations
-    //void merge(const OrdList& fromL);        //in-lab 2
-    //bool isSubset (const OrdList &subL);     //in-lab 3
+    void merge(const OrdList& fromL);        //in-lab 2
+    bool isSubset (const OrdList &subL);     //in-lab 3
 
   private:
 

@@ -42,7 +42,7 @@ void print_help()
 
 int main(void)
 {
-    OrdList testList(8);  // Test list
+    OrdList testList(8);                // Test list
     DataType testElement;               // List element
     char inputKey;                      // User input key
     char cmd;                           // Input command

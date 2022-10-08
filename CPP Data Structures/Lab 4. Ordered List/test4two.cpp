@@ -41,17 +41,17 @@ int main(void)
     cout << endl << "List 2 : " << endl;
     testList2.showStructure();
 
-//M  // Merge list 2 into list 1.
-//M  testList1.merge(testList2);
-//M  cout << endl << "After merge -- List 1 : " << endl;
-//M  testList1.showStructure();
+    //  // Merge list 2 into list 1.
+    //testList1.merge(testList2);
+    //cout << endl << "After merge -- List 1 : " << endl;
+    //testList1.showStructure();
 
-//S  // Check whether list 2 is a subset of list 1.
-//S  cout << endl;
-//S  if ( testList1.isSubset(testList2) )
-//S     cout << "List 2 is a subset of list 1" << endl;
-//S  else
-//S     cout << "List 2 is NOT a subset of list 1" << endl;
+    // Check whether list 2 is a subset of list 1.
+    cout << endl;
+    if ( testList1.isSubset(testList2) )
+       cout << "List 2 is a subset of list 1" << endl;
+    else
+       cout << "List 2 is NOT a subset of list 1" << endl;
 
     system("PAUSE");
     return 0;
