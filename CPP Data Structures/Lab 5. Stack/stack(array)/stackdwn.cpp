@@ -12,7 +12,9 @@
 template <class DT>
 Stack<DT>::Stack(int maxNumber)
 {
-
+    maxSize = maxNumber;
+    top = maxSize;
+    dataItems = new DT[maxSize];
 }
 
 //--------------------------------------------------------------------
@@ -28,7 +30,17 @@ Stack<DT>:: ~Stack()
 template <class DT>
 void Stack<DT>::push(const DT& newDataItem)
 {
+    if (isFull())
+    {
+        cout << "List is Full" << endl;
+    }
 
+    else
+    {
+        top -= 1;
+
+        dataItems[top] = newDataItem;
+    }
 }
 
 //--------------------------------------------------------------------
@@ -36,7 +48,17 @@ void Stack<DT>::push(const DT& newDataItem)
 template <class DT>
 DT Stack<DT>::pop()
 {
+    if (isEmpty())
+    {
+        cout << "List is empty." << endl;
+    }
 
+    else
+    {
+        top += 1;
+
+        return dataItems[top - 1];
+    }
 }
 
 //--------------------------------------------------------------------
@@ -44,7 +66,7 @@ DT Stack<DT>::pop()
 template <class DT>
 void Stack<DT>::clear()
 {
-
+    top = maxSize;
 }
 
 //--------------------------------------------------------------------
@@ -52,7 +74,11 @@ void Stack<DT>::clear()
 template <class DT>
 bool Stack<DT>::isEmpty() const
 {
+    if (top == maxSize)
+        return true;
 
+    else
+        return false;
 }
 
 //--------------------------------------------------------------------
@@ -60,7 +86,11 @@ bool Stack<DT>::isEmpty() const
 template <class DT>
 bool Stack<DT>::isFull() const
 {
+    if (top == -1)
+        return true;
 
+    else
+        return false;
 }
 
 //--------------------------------------------------------------------

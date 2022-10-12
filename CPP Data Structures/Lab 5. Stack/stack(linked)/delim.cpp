@@ -30,7 +30,7 @@ int main(void)
         cout << "Enter delimited expression (<EOF> to quit) : "
              << endl;
 
-        // Read in one line
+        // Read in one line 
         inputLine = "";
         cin.get(ch);
         while( cin && ch != '\n' )
@@ -53,6 +53,35 @@ int main(void)
 
 
 bool delimitersOk(const string& expression)
+// 일단 여는 괄호만 넣기
+// 닫는 괄호 만나면 여는거 pop
 {
+    Stack<char> test;
+    
+    for (int i = 0; i < expression.size(); i++)
+    {
+        if (expression[i] == '(' || expression[i] == '[')
+        {
+            test.push(expression[i]);
+        }
 
+        switch (expression[i])
+        {
+        case ')':
+            if (test.pop() == '(')
+                continue;
+            else
+                return false;
+            break;
+
+        case ']':
+            if (test.pop() == '[')
+                continue;
+            else
+                return false;
+            break;
+        }
+    }
+
+    return true;
 }
