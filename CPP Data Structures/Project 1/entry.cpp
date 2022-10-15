@@ -8,14 +8,35 @@ entry::entry()
 	nameMonth = "";
 }
 
-void entry::setName(string name)
+string entry::getName()
 {
-	this->name = name;
+	return name;
+}
+
+
+string entry::getPhoneNum()
+{
+	return phoneNum;
+}
+
+string entry::getBirthday()
+{
+	return birthday;
+}
+
+int entry::getMonth()
+{
+	return this->month;
 }
 
 string entry::getNameMonth()
 {
-	return name;
+	return nameMonth;
+}
+
+void entry::setName(string name)
+{
+	this->name = name;
 }
 
 void entry::setPhoneNum(string num)
@@ -72,16 +93,6 @@ void entry::setBirthday(string date)
 		break;
 
 	}
-}
-
-int entry::getMonth()
-{
-	return this->month;
-}
-
-string entry::getNameMonth()
-{
-	return nameMonth;
 }
 
 void entry::printEntry()
