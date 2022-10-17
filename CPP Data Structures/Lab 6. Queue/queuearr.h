@@ -32,8 +32,8 @@ public:
     void showStructure() const;
 
     // In-lab 2
-    //void putFront(const DT& newDataItem);
-    //DT getRear();
+    void putFront(const DT& newDataItem);
+    DT getRear();
     
     // In-lab 3
     //int getLength() const; //In-lab 3
