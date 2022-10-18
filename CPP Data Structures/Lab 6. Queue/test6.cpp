@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "queuearr.cpp"
-// #include "queuelnk.cpp"
+//#include "queuelnk.cpp"
 
 using namespace std;
 
@@ -78,9 +78,9 @@ int main(void)
 			cout << "Got " << testQueue.getRear() << " from rear" << endl;
 			break;
 
-		/*case'#':
+		case'#':
 			cout << "Queue's length is " << testQueue.getLength() << endl;
-			break;*/
+			break;
 
 		case 'Q': case 'q':                   // Quit test program
 			break;

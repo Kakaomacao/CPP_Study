@@ -55,7 +55,10 @@ DT Queue<DT>::dequeue()
     {
         DT temp = dataItems[front];
 
-        front = (front + 1) % 8;
+        if (front + 1 > rear)
+            clear();
+        else
+            front = (front + 1) % 8;
 
         return temp;
     }
@@ -71,7 +74,7 @@ void Queue<DT>::clear()
 template < class DT >
 bool Queue<DT>::isEmpty() const
 {
-    if (rear == front)
+    if (rear == -1 && front == -1)
         return true;
 
     else
@@ -155,15 +158,28 @@ DT Queue<DT>::getRear()
     {
         DT temp = dataItems[rear];
 
-        rear = (rear + 7) % 8;
+        if (front + 1 > rear)
+            clear();
+
+        else
+            rear = (rear + 7) % 8;
 
         return temp;
     }
 }
 
-//template < class DT >
-//int Queue<DT>::getLength() const
-//{
-//    // In-lab 3
-//
-//}
+template < class DT >
+int Queue<DT>::getLength() const
+{
+    if (rear > front)
+        return rear - front + 1;
+
+    else if (rear < front)
+        return maxSize - front + rear + 1;
+
+    else if (isEmpty())
+        return 0;
+
+    else
+        return 1;
+}

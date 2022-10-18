@@ -36,7 +36,7 @@ public:
     DT getRear();
     
     // In-lab 3
-    //int getLength() const; //In-lab 3
+    int getLength() const; //In-lab 3
 
 private:
 
