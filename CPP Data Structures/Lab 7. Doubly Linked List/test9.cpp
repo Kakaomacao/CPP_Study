@@ -122,17 +122,17 @@ int main(void)
                 cout << "List is NOT full" << endl;
             break;
 
-        //case 'R': case 'r':                   // In-lab Exercise 2
-        //    cout << "Reverse the list" << endl;
-        //    testList.reverse();
-        //    break;
+        case 'R': case 'r':                   // In-lab Exercise 2
+            cout << "Reverse the list" << endl;
+            testList.reverse();
+            break;
 
-        //case '#':                              // In-lab Exercise 3
-        //    cout << "size = " << testList.getLength();
-        //    if (!testList.isEmpty())
-        //        cout << "  position = " << testList.getPosition();
-        //    cout << endl;
-        //    break;
+        case '#':                              // In-lab Exercise 3
+            cout << "size = " << testList.getLength();
+            if (!testList.isEmpty())
+                cout << "  position = " << testList.getPosition();
+            cout << endl;
+            break;
 
         case 'Q': case 'q':                   // Quit test program
             break;
@@ -141,6 +141,7 @@ int main(void)
             cout << "Inactive or invalid command" << endl;
         }
     } while (cmd != 'Q' && cmd != 'q');
+
 
     return 0;
 }

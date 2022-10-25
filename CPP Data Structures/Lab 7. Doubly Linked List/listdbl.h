@@ -64,11 +64,11 @@ public:
     void showStructure() const;
 
     // In-lab2 operations
-    //void reverse();
+    void reverse();
     
     // In-lab3 operation
-    //int getLength() const;                     // Length of list
-    //int getPosition() const;                    // Position of cursor
+    int getLength() const;                     // Length of list
+    int getPosition() const;                    // Position of cursor
 
 private:
 
