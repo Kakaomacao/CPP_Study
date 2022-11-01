@@ -19,7 +19,7 @@ public:
 
 	Item(int itemType) : _itemType(itemType)
 	{
-
+		cout << "Item(int itemType)" << endl;
 	}
 
 	Item(const Item& item)
@@ -27,9 +27,14 @@ public:
 		cout << "Item(const Item& item)" << endl;
 	}
 
-	~Item()
+	virtual ~Item()
 	{
 		cout << "~Item()" << endl;
+	}
+
+	virtual void Test()
+	{
+		cout << "Test Item" << endl;
 	}
 
 public:
@@ -51,11 +56,17 @@ public:
 	Weapon() : Item(IT_WEAPON)
 	{
 		cout << "Weapon()" << endl;
+		_damage = rand() % 100;
 	}
 
 	~Weapon()
 	{
 		cout << "~Weapon()" << endl;
+	}
+
+	virtual void Test()
+	{
+		cout << "Test Weapon" << endl;
 	}
 
 	int _damage = 0;
@@ -84,7 +95,7 @@ void TestItem(Item item)
 
 void TestItemPtr(Item* item)
 {
-
+	item->Test();
 }
 
 int main()
@@ -126,6 +137,8 @@ int main()
 		// 암시적으로도 가능!!
 		Item* item = weapon;
 
+		TestItemPtr(item);
+
 		delete weapon;
 	}
 
@@ -151,7 +164,34 @@ int main()
 		}
 	}
 
+	for (int i = 0; i < 20; i++)
+	{
+		Item* item = inventory[i];
+		if (item == NULL)
+			continue;
 
+		if (item->_itemType == IT_WEAPON)
+		{
+			Weapon* weapon = (Weapon*)item;
+			cout << "Weapon damage : " << weapon->_damage << endl;
+		}
+	}
+
+	// *************************** 매우 매우 매우 중요 ***************************
+
+	for (int i = 0; i < 20; i++)
+	{
+		Item* item = inventory[i];
+		if (item == NULL)
+			continue;
+
+		delete item;
+	}
+
+	// [결론]
+	// - 포인터 vs 일반 타입 : 차이를 이해하자
+	// - 포인터 사이의 타입 변환(캐스팅)을 할 때는 매우 매우 조심하자!!
+	// - 부모-자식 관계에서 부모 클래스의 소멸자에는 까먹지 말고 virtual을 붙이자!!!!!
 
 	return 0;
 }
