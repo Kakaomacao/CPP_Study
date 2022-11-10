@@ -27,13 +27,15 @@ using namespace std;
 template<class DT>
 ListNode<DT>::ListNode(const DT& nodeData, ListNode* nextPtr)
 {
-
+    dataItem = nodeData;
+    next = nextPtr;
 }
 
 template<class DT>
 List<DT>::List(int ignored)
 {
-
+    head = nullptr;
+    cursor = nullptr;
 }
 
 template<class DT>
@@ -45,13 +47,34 @@ List<DT>::~List()
 template<class DT>
 void List<DT>::insert(const DT& newData)
 {
+    if (head == nullptr)
+    {
+        ListNode<DT>* newNode = new ListNode<DT>(newData, nullptr);
+        head = newNode;
+        cursor = newNode;
+    }
 
+    else
+    {
+        ListNode<DT>* newNode = new ListNode<DT>(newData, nullptr);
+        cursor->next = newNode;
+        cursor = newNode;
+    }
+    
 }
 
 template<class DT>
 void List<DT>::clear()
 {
+    ListNode<DT>* prevNode = head;
+    ListNode<DT>* curNode = head->next;
 
+    while (curNode != nullptr)
+    {
+        delete prevNode;
+        prevNode = curNode;
+        curNode = curNode->next;
+    }
 }
 
 template<class DT>
@@ -264,7 +287,21 @@ int List<DT>:: getLengthSub ( ListNode<DT> *p ) const
 template < class DT >
 void List<DT>::iterReverse()
 {
+    ListNode<DT>* prevNode = head;
+    ListNode<DT>* curNode = head->next;
+    ListNode<DT>* temp;
 
+    head->next = nullptr;
+
+    while (curNode != nullptr)
+    {
+        temp = curNode->next;
+        curNode->next = prevNode;
+        prevNode = curNode;
+        curNode = temp;
+    }
+
+    head = prevNode;
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -272,6 +309,24 @@ void List<DT>::iterReverse()
 template < class DT >
 void List<DT>::stackWriteMirror() const
 {
+    ListNode<DT>* temp = head;
+    Stack<DT> tempStack;
+    cout << "Stack Mirror : ";
+
+    while (temp != nullptr)
+    {
+        cout << temp->dataItem;
+        tempStack.push(temp->dataItem);
+        temp = temp->next;
+    }
+
+    while (!tempStack.isEmpty())
+    {
+        DT item = tempStack.pop();
+        cout << item;
+    }
+
+    cout << endl;
 
 }
 
@@ -280,7 +335,7 @@ void List<DT>::stackWriteMirror() const
 template < class DT >
 void List<DT>::aBeforeb()
 {
-
+    aBeforebSub(head);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -288,5 +343,17 @@ void List<DT>::aBeforeb()
 template < class DT >
 void List<DT>::aBeforebSub(ListNode<DT> *&p)
 {
+    if (p != 0)
+    {
+        if (p->dataItem == 'b')
+        {
+            ListNode<DT>* newNode = new ListNode<DT>('a', p);
+            aBeforebSub(p->next);
+            p = newNode;
+           
+        }
 
+        else
+            aBeforebSub(p->next);
+    }
 }

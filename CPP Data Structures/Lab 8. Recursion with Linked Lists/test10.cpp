@@ -28,16 +28,16 @@ int main(void)
     // Call a recursive routine by uncommenting the call you wish to
     // execute.
     
-//PA  testList.write();
-//PA  testList.insertEnd('!');
-//PB  testList.writeMirror();
-//PC  testList.reverse();
-//PD  testList.deleteEnd();
-//PE  cout << "length = " <<  testList.getLength() << endl;
+    testList.write();
+    testList.insertEnd('!');
+    testList.writeMirror();
+    testList.reverse();
+    testList.deleteEnd();
+    cout << "length = " <<  testList.getLength() << endl;
 
-//1A  testList.iterReverse();
-//1B  testList.stackWriteMirror();
-//2   testList.aBeforeb();
+    testList.iterReverse();
+    testList.stackWriteMirror();
+    testList.aBeforeb();
 
     testList.showStructure();
 
