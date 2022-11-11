@@ -22,6 +22,7 @@ int main()
 	const int TEST_COUNT = 100 * 10000; // 100만
 	const int TEST_VALUE = 100 * 10000; // 100만
 
+	// 오버플로우 문제군!! 100만 * 100만 하면 int형의 범위를 넘어서버려
 	for (int i = 0; i < TEST_COUNT; i++)
 	{
 		k1->AddHp(TEST_VALUE);

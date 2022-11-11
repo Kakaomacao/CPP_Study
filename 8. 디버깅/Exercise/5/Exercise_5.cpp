@@ -25,6 +25,7 @@ int main()
 	int damage = k1->GetAttackDamage();
 	k2->AddHp(-damage);
 
+	// _hp가 0이여서 0으로 나누기로 인해서 크래시 발생
 	int damage2 = k2->GetAttackDamage();
 	k1->AddHp(-damage2);
 	
