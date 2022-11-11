@@ -1,6 +1,5 @@
 #pragma once
 
-
 class Member
 {
 private:
@@ -13,9 +12,15 @@ private:
 
 public:
 	Member();
+	Member(string id, string pw);
+
+	bool isNonMember();
 	bool isAdmin();
+	
+	int getMemberCount();
 	void setMS(int count);
 	void showMemberInfo();
-};
 
-int Member::memberCount = 0;
+	static void showMemberMenu(Member* curMember, Member members[]);
+	static void login(Member*& curMember, Member members[]);
+};
