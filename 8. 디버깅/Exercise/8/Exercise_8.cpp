@@ -36,10 +36,13 @@ int main()
 			{
 				// 여기서 같이 만들어준다
 				// 이런 저런 펫 정보 추가될 예정
-				Pet pet;
+				// Pet pet; 
+				// 자동으로 알아서 소멸되고 생성되는데 직접적으로 Archer에 넘겨서 문제 발생
+				// 즉 new로 만든게 아닌 애를 Archer의 소멸자에서 지워주려고 했기 때문에 문제가 발생했군!
+				Pet* pet = new Pet();
 
 				// Archer를 만들 때 pet 정보도 넘겨준다
-				p = new Archer(&pet);
+				p = new Archer(pet);
 				p->_hp = 100;
 				p->_attack = 100;
 
@@ -54,6 +57,8 @@ int main()
 			}			
 		}
 
+		// Archer를 삭제하면서 이상해졌군!!
+		// 유효하지 않은 메모리를 지우려고 했군!!
 		delete p;
 	}
 

@@ -27,6 +27,8 @@ int main()
 	int damage = knight->GetAttackDamage();
 	archer->AddHp(-damage);
 
+	// pet을 두 번 지우게 되었기 때문에 오류가 발생했군!!
+	// 이런 것을 방지하기 위해서 지우고 nullptr로 설정해주자!!
 	delete archer;
 	delete knight;
 }
