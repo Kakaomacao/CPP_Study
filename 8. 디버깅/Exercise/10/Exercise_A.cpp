@@ -36,19 +36,23 @@ int main()
 		arrows[i] = arrow;
 	}
 
+	// target의 메모리가 유효하지 않아서 일어난 문제군!!
+	// knight가 사라져서 된거 같은데??
+	// 반복문 속에서 날려버리면 Arrow들은 유효하지 않은지 몰라!!
+	// Use After Free!! -> 소멸된 뒤에 사용
 	for (int i = 0; i < 10; i++)
 	{
 		arrows[i]->AttackTarget();
 
 		// 기사가 죽었으면 소멸시켜준다
-		if (knight != nullptr)
+		/*if (knight != nullptr)
 		{
 			if (knight->IsDead())
 			{
 				delete knight;
 				knight = nullptr;
 			}
-		}	
+		}	*/
 
 		delete arrows[i];
 		arrows[i] = nullptr;
