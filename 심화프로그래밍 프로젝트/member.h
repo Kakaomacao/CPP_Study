@@ -25,18 +25,19 @@ public:
 	// 관리자인지 아닌지 체크하는 함수
 	bool isAdmin();
 	
+	string getId();
+	string getPassword();
 	int getPoint();
 	// 총 회원수를 넘겨주는 함수
 	int getMemberCount();
+	void setMemberCount(int n);
+	string getMembership();
 	
 	void setPoint(int p);
-	// 아직 미구현
 	void setMS(int count);
+	// 아직 미구현
 	void showMemberInfo();
 
-	// 꼭 클래스에서 접근하지 않아도 되도록 static으로
-	// 회원 관리 메뉴
-	static void showMemberMenu(Member* curMember, Member members[]);
-	// 로그인 함수
-	static void login(Member*& curMember, Member members[]);
+
+	
 };

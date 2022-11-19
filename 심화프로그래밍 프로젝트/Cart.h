@@ -7,11 +7,12 @@ class Cart
 private:
 	int numberOf;
 	int state;
-	Food* food;
 
 	static int totalPrice;
 
 public:
+	Food* food;
+
 	Cart();
 	Cart(int n, int state, Food* food);
 
@@ -23,7 +24,7 @@ public:
 	void addCart();
 	void emptyCart();
 	void orderFood();
+	static int discountByMembership(Member* curMember);
 
-	static void showCart(Member* curMember, Cart carts[][3]);
 };
 

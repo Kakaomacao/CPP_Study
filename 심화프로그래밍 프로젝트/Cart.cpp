@@ -50,50 +50,15 @@ void Cart::orderFood()
 
 }
 
-void Cart::showCart(Member* curMember, Cart carts[][3])
+int Cart::discountByMembership(Member* curMember)
 {
-	int input;
-
-	if (totalPrice == 0)
-	{
-		cout << "장바구니가 비어있습니다." << endl; 
-		return;
-	}
-
-	for(int i = 0; i < 4; i++)
-		for (int j = 0; j < 3; j++)
-		{
-			if (carts[i][j].getNumber() != 0)
-			{
-				cout << carts[i][j].food->getFoodName() << " : " << carts[i][j].getNumber() << "개를 ";
-
-				if (carts[i][j].state == 1)
-					cout << "포장 주문" << endl;
-				else if (carts[i][j].state == 2)
-					cout << "배달 주문" << endl;
-			}
-		}
-
-	cout << "1) 주문 2) 나가기" << endl << ">> ";
-	cin >> input;
-
-	if (input == 1)
-	{
-		if (curMember->getPoint() >= totalPrice)
-		{
-			cout << "총 주문 금액은 " << totalPrice << "(원)입니다." << endl;
-			cout << "예상 주문 소요 시간은 " << rand() % 50 + 10 << "분입니다." << endl;
-			cout << "주문해주셔서 감사합니다~!" << endl;
-
-			curMember->setMS(totalPrice);
-			curMember->setPoint(curMember->getPoint() - totalPrice);
-			curMember->setMS(totalPrice);
-
-			for (int i = 0; i < 4; i++)
-				for (int j = 0; j < 3; j++)
-					carts[i][j].emptyCart();
-
-			totalPrice = 0;
-		}
-	}
+	if (curMember->getMembership() == "Bronze")
+		return totalPrice * 0.95 / 10 * 10;
+	else if (curMember->getMembership() == "Silver")
+		return totalPrice * 0.92 / 10 * 10;
+	else if (curMember->getMembership() == "Gold")
+		return totalPrice * 0.90 / 10 * 10;
+	else if (curMember->getMembership() == "Platinum")
+		return totalPrice * 0.85 / 10 * 10;
 }
+
