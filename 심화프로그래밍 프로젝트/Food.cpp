@@ -13,11 +13,15 @@ Food::Food(int price, string name)
 
 //-------------------------------------------------------------------
 
+// get 함수들
+
+// 음식의 가격을 반환해주는 함수
 int Food::getPrice()
 {
 	return price;
 }
 
+// 음식의 이름을 반환해주는 함수
 string Food::getFoodName()
 {
 	return name;
@@ -60,9 +64,6 @@ void Food::showFoodDetail()
 		cout << endl;
 	}
 
+	cout << "가격 : " << this->price << endl;
 	cout << "설명 : " << this->detail << endl;
-
 }
-
-
-//-------------------------------------------------------------------

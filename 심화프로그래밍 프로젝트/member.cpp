@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#include "member.h"
+#include "Member.h"
 
 // 기본 생성자
 Member::Member()
@@ -15,7 +15,7 @@ Member::Member()
 
 // string형 변수 2개를 아이디, 비밀번호로 입력받는 생성자
 // 이 때, 회원 가입이 진행되며 회원 등급을 Bronze로 설정
-Member::Member(string id = "", string pw = "")
+Member::Member(string id, string pw)
 {
 	this->id = id;
 	password = pw;
@@ -54,44 +54,64 @@ bool Member::isAdmin()
 
 //-------------------------------------------------------------------
 
+// get 함수들 -> private인 클래스 변수들 반환
+
+// 회원의 ID를 반환해주는 함수
 string Member::getId()
 {
 	return id;
 }
 
+// 회원의 비밀번호를 반환해주는 함수
 string Member::getPassword()
 {
 	return password;
 }
 
-int Member::getPoint()
-{
-	return point;
-}
-
-int Member::getMemberCount()
-{
-	return memberCount;
-}
-
-void Member::setMemberCount(int n)
-{
-	memberCount = n;
-}
-
-void Member::setPoint(int p)
-{
-	point = p;
-}
-
+// 회원의 회원 등급을 반환해주는 함수
 string Member::getMembership()
 {
 	return membership;
 }
 
+// 회원의 포인트 잔액을 반환해주는 함수
+int Member::getPoint()
+{
+	return point;
+}
+
+// 회원 포인트를 반환해주는 함수
+int Member::getMemberPoint()
+{
+	return memberPoint;
+}
+
+// 총 회원수를 반환해주는 함수
+int Member::getMemberCount()
+{
+	return memberCount;
+}
+
+//-------------------------------------------------------------------
+
+// set 함수들 -> private인 클래스 변수들 수정
+
+// 총 회원수를 수정해주는 함수
+void Member::setMemberCount(int n)
+{
+	memberCount = n;
+}
+
+// 금액 충전 or 사용 후에 Point를 수정하기 위한 함수
+void Member::setPoint(int p)
+{
+	point = p;
+}
+
+// 구매 이후 구매포인트를 얻고 구매포인트의 양에 따라서 회원 등급 수정
 void Member::setMS(int n)
 {
-	memberPoint += n / 1000;
+	memberPoint += n / 10000;
 
 	if (memberPoint >= 4 && memberPoint < 6)
 		membership = "Silver";
@@ -102,7 +122,3 @@ void Member::setMS(int n)
 	else if (memberPoint >= 10)
 		membership = "Platinum";
 }
-
-
-//-------------------------------------------------------------------
-

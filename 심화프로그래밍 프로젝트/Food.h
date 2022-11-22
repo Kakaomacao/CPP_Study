@@ -1,7 +1,5 @@
 #pragma once
 
-class Member;
-
 class Food
 {
 private:
@@ -15,10 +13,11 @@ public:
 	// 가격, 이름을 매개변수로 받는 생성자
 	Food(int price, string name);
 
+	// get 함수
 	int getPrice();
-	// 음식의 이름 반환
 	string getFoodName();
 
+	// 음식의 이름, 별점, 가격, 설명 출력
 	void showFoodDetail();
 };
 
