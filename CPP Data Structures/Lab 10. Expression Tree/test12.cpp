@@ -21,16 +21,16 @@ int main(void)
 	cout << " = " << testExpression.evaluate() << endl;
 
 //  Test the copy constructor.   (In-lab Exercise 2)
-//  dummy(testExpression);
-//  cout << endl << "Original tree:" << endl;
-//  testExpression.showStructure();
+   /* dummy(testExpression);
+    cout << endl << "Original tree:" << endl;
+    testExpression.showStructure();*/
 
 //  Test the commute operation.  (In-lab Exercise 3)
-//  testExpression.commute();
-//  cout << endl << "Fully commuted tree: " << endl;
-//  testExpression.showStructure();
-//  testExpression.expression();
-//  cout << " = " << testExpression.evaluate() << endl;
+    testExpression.commute();
+    cout << endl << "Fully commuted tree: " << endl;
+    testExpression.showStructure();
+    testExpression.expression();
+    cout << " = " << testExpression.evaluate() << endl;
 
 	cout << endl << "Clear the tree" << endl;
 	testExpression.clear();

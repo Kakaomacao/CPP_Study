@@ -49,8 +49,8 @@ public:
 	void showStructure() const;
 
 	// In-lab operations
-//	ExprTree(const ExprTree& valueTree);   // Copy constructor
-//	void commute();                       // Commute all subexpr.
+	ExprTree(const ExprTree& valueTree);   // Copy constructor
+	void commute();                       // Commute all subexpr.
 
 private:
 
@@ -63,8 +63,8 @@ private:
 	void showSub(ExprTreeNode* p, int level) const;
 
 	// In-lab operations
-//	void copySub(ExprTreeNode*& dest, ExprTreeNode* source);
-//	void commuteSub(ExprTreeNode*& p);
+	void copySub(ExprTreeNode*& dest, ExprTreeNode* source);
+	void commuteSub(ExprTreeNode*& p);
 
 	// Data member
 	ExprTreeNode* root;   // Pointer to the root node
