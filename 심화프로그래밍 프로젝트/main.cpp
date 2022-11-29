@@ -202,7 +202,7 @@ void showMemberMenu(Member*& curMember, Member members[])
 			{
 				curMember->setPoint(input);
 				cout << "충전을 완료하였습니다." << endl;
-				cout << "현재 잔여 포인트는 " << curMember->getPoint() + input << endl;
+				cout << "현재 잔여 포인트는 " << curMember->getPoint() << endl;
 			}
 
 			else
