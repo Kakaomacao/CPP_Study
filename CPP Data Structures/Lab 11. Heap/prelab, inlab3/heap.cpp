@@ -13,13 +13,15 @@
 template<class DT>
 Heap<DT>::Heap(int maxNumber)
 {
-
+    maxSize = maxNumber;
+    size = 0;
+    dataItems = new DT[maxSize];
 }
 
 template < class DT >
 Heap<DT>::~Heap()
 {
-
+    delete[] dataItems;
 }
 
 //--------------------------------------------------------------------
@@ -27,19 +29,62 @@ Heap<DT>::~Heap()
 template < class DT >
 void Heap<DT>::insert(const DT& newDataItem)
 {
+    if (!isFull())
+    {
+        dataItems[size].setPty(newDataItem.pty());
+        size++;
 
+        int child = size - 1;
+        int parent = (child - 1) / 2;
+        while (child > 0 && dataItems[parent].pty() < dataItems[child].pty())
+        {
+            DT temp = dataItems[parent];
+            dataItems[parent].setPty(dataItems[child].pty());
+            dataItems[child].setPty(temp.pty());
+            
+            child = parent;
+            parent = (child - 1) / 2;
+        }
+    }
+
+    else
+        cout << "Heap is Full" << endl;
 }
 
 template < class DT >
 DT Heap<DT>::removeMax()
 {
+    // 처음과 마지막 교환
+    DT temp = dataItems[0];
+    dataItems[0].setPty(dataItems[size - 1].pty());
+    size--;
 
+    // 자식과 비교해서 더 큰 것과 교환
+    int parent = 0;
+    int child = parent * 2 + 1;
+    if (child + 1 <= size) {
+        child = (dataItems[child].pty() > dataItems[child + 1].pty()) ? child : child + 1;
+    }
+
+    while (child <= size && dataItems[parent].pty() < dataItems[child].pty()) {
+        DT temp = dataItems[parent];
+        dataItems[parent].setPty(dataItems[child].pty());
+        dataItems[child].setPty(temp.pty());
+
+        parent = child;
+        child = child * 2 + 1;
+        if (child + 1 <= size) {
+            child = (dataItems[child].pty() > dataItems[child + 1].pty()) ? child : child + 1;
+        }
+    }
+
+    return temp;
 }
 
 template < class DT >
 void Heap<DT>::clear()
 {
-
+    size = 0;
 }
 
 //--------------------------------------------------------------------
@@ -47,13 +92,13 @@ void Heap<DT>::clear()
 template < class DT >
 bool Heap<DT>::isEmpty() const
 {
-
+    return (size == 0);
 }
 
 template < class DT >
 bool Heap<DT>::isFull() const
 {
-
+    return (size == maxSize);
 }
 
 //--------------------------------------------------------------------
@@ -116,5 +161,36 @@ void Heap<DT>::showSubtree ( int index, int level ) const
 template < class DT >
 void Heap<DT>::writeLevels() const
 {
+    int level = 0;
 
+    while (true)
+    {
+        int k = 1;
+        int sum = 0;
+        for (int i = 0; i < level; i++)
+        {
+            if (level == 0)
+            {
+                break;
+            }
+
+            k = k * 2;
+        }
+
+        sum += k;
+
+        if (sum > size)
+            break;
+
+        for (int j = k - 1; j <= 2 * (k - 1); j++)
+        {
+            if (j >= size)
+                break;
+
+            cout << dataItems[j].pty() << " ";
+        }
+        
+        level++;
+        cout << endl;
+    }
 }

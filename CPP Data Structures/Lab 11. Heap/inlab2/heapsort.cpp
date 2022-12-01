@@ -14,7 +14,17 @@ void moveDown ( DT dataItem [], int root, int size )
 // Parameter size is the number of data items in the array.
 
 {
+    DT temp;
 
+    for (int i = 0; root + i < size; i++)
+    {
+        if (dataItem[root + i].pty() > dataItem[(root + i) / 2].pty())
+        {
+            temp = dataItem[root + i];
+            dataItem[root + i] = dataItem[(root + i) / 2];
+            dataItem[(root + i) / 2] = temp;
+        }
+    }
 }
 
 //--------------------------------------------------------------------
