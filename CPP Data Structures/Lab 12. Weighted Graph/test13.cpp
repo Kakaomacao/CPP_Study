@@ -41,7 +41,7 @@ int main(void)
 
 	do
 	{
-//PM    testGraph.computePaths();                    // In-lab Exercise 1
+        testGraph.computePaths();                    // In-lab Exercise 1
 
 		testGraph.showStructure();                   // Output graph
 

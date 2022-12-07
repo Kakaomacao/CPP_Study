@@ -57,7 +57,7 @@ public:
 	void showStructure();
 
 	// In-lab 1 operation
-	//void computePaths();
+	void computePaths();
 
 private:
 
@@ -72,10 +72,10 @@ private:
 											   //   adjacency matrix indices
 
 	// In-lab 1 functions
-	//int getPath(int row, int col);               // Get path weight using
+	int getPath(int row, int col);               // Get path weight using
 												   //   path matrix indices
 
-	//void setPath(int row, int col, int wt);    // Set path weight using
+	void setPath(int row, int col, int wt);    // Set path weight using
 												 //   path matrix indices
 
 	// Data members
@@ -83,5 +83,5 @@ private:
 		size;             // Actual number of vertices in the graph
 	Vertex* vertexList;   // Vertex list
 	int* adjMatrix;       // Adjacency matrix
-	//int *pathMatrix;      // (In-lab 1) Path matrix
+	int *pathMatrix;      // (In-lab 1) Path matrix
 };
