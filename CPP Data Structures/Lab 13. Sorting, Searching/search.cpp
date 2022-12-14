@@ -17,7 +17,31 @@ int linearSearch(DT keyList[], int numKeys,
     // entry containing the largest key that is smaller than searchKey
 
 {
-   
+    bool found = false;
+    DT temp = keyList[0];
+
+    for (int i = 0; i < numKeys; i++)
+    {
+        if (keyList[i] == searchKey)
+        {
+            index = i;
+            found = true;
+        }
+
+        else if(temp < keyList[i])
+            if (temp < searchKey)
+            {
+                temp = keyList[i];
+                index = i;
+            }
+    }
+
+    if (found)
+        return 1;
+
+    else
+        return -1;
+
 }
 
 //--------------------------------------------------------------------
@@ -33,5 +57,26 @@ int binarySearch(DT keyList[], int numKeys,
     // entry containing the largest key that is smaller than searchKey
 
 {
+    bool found = false;
+    int first = 0;
+    int last = numKeys - 1;
+    int mid;
+
+    while (first <= last) {
+        mid = (first + last) / 2;
+
+        if (keyList[mid] == searchKey)
+        {
+            index = mid;
+            return 1;
+        }
+
+        else if (keyList[mid] > searchKey) 
+            last = mid - 1;
+
+        else 
+            first = mid + 1;
+    }
     
+    return -1;
 }
